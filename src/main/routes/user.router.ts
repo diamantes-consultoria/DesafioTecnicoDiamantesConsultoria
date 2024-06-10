@@ -1,6 +1,5 @@
 // src/routes/authRoutes.ts
 import { Router } from 'express';
-import { PrismaClient } from '@prisma/client';
 import { UserRepositoryPrisma } from '@/model/repositories/user.repository';
 import { UserService } from '@/model/services/user.service';
 import { AuthController } from '@/controllers/auth.controller';
