@@ -1,8 +1,7 @@
-// src/routes/authRoutes.ts
+import { AuthController } from '@/controllers/auth.controller';
 import { Router } from 'express';
 import { UserRepositoryPrisma } from '@/model/repositories/user.repository';
 import { UserService } from '@/model/services/user.service';
-import { AuthController } from '@/controllers/auth.controller';
 import { prisma } from '@/utils/prisma.util';
 
 const router = Router();

@@ -1,9 +1,8 @@
-// src/index.ts
 import express from 'express';
 import { json } from 'body-parser';
 import dotenv from 'dotenv';
-import { authRoutes } from './routes/user.router';
-import { productRoutes } from './routes/product.router';
+import { authRoutes } from '@/routes/auth.router';
+import { productRoutes } from '@/routes/product.router';
 
 dotenv.config();
 

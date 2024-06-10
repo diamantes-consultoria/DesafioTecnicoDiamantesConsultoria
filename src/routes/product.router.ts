@@ -1,12 +1,11 @@
 // src/routes/productRoutes.ts
 import { Router } from 'express';
-
-import { authenticate } from '@/middlewares/authenticate';
 import { ProductController } from '@/controllers/product.controller';
+import { authenticate } from '@/middlewares/authenticate';
 import { ProductRepositoryPrisma } from '@/model/repositories/product.repository';
+import { UserRepositoryPrisma } from '@/model/repositories/user.repository';
 import { ProductService } from '@/model/services/product.service';
 import { prisma } from '@/utils/prisma.util';
-import { UserRepositoryPrisma } from '@/model/repositories/user.repository';
 
 const router = Router();
 const userRepository = new UserRepositoryPrisma(prisma);
