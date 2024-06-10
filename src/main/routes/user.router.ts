@@ -4,9 +4,9 @@ import { PrismaClient } from '@prisma/client';
 import { UserRepositoryPrisma } from '@/model/repositories/user.repository';
 import { UserService } from '@/model/services/user.service';
 import { AuthController } from '@/controllers/auth.controller';
+import { prisma } from '@/utils/prisma.util';
 
 const router = Router();
-const prisma = new PrismaClient();
 const userRepository = new UserRepositoryPrisma(prisma);
 const userService = new UserService(userRepository);
 const authController = new AuthController(userService);
