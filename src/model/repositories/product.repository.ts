@@ -9,6 +9,7 @@ export interface ProductRepository {
   find(id: string): Promise<Product | null>;
   update(product: Product): Promise<void>;
   delete(id: string): Promise<void>;
+  findByName(name: string): Promise<Product | null>;
 }
 
 export class ProductRepositoryPrisma implements ProductRepository {
@@ -76,5 +77,21 @@ export class ProductRepositoryPrisma implements ProductRepository {
     const product = await this.prisma.product.findUnique({ where: { id } });
     if (!product) throw new Error('Product not found!');
     await this.prisma.product.delete({ where: { id } });
+  }
+
+  async findByName(name: string): Promise<Product | null> {
+    const product = await this.prisma.product.findUnique({
+      where: { name },
+      include: { user: true },
+    });
+    if (!product) return null;
+    return Product.with(
+      product.id,
+      product.name,
+      product.price,
+      product.quantity,
+      product.user,
+      product.photo,
+    );
   }
 }
