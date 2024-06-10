@@ -6,7 +6,7 @@ export type ProductProps = {
   name: string;
   price: number;
   quantity: number;
-  photo?: string;
+  photo?: string | null;
   user: UserProps;
 };
 
