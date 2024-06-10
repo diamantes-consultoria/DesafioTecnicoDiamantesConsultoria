@@ -40,8 +40,27 @@ export class ProductRepositoryPrisma implements ProductRepository {
     const products = await this.prisma.product.findMany({
       include: { user: true },
     });
-    return products.map((p: ProductProps) =>
-      Product.with(p.id, p.name, p.price, p.quantity, p.user, p.photo),
+    return products.map(
+      (p: {
+        id: string;
+        name: string;
+        price: number;
+        quantity: number;
+        photo: string | null;
+        user: { id: string; email: string; password: string };
+      }) =>
+        Product.with(
+          p.id,
+          p.name,
+          p.price,
+          p.quantity,
+          {
+            id: p.user.id,
+            email: p.user.email,
+            password: p.user.password,
+          },
+          p.photo || undefined,
+        ),
     );
   }
 
@@ -56,12 +75,19 @@ export class ProductRepositoryPrisma implements ProductRepository {
       product.name,
       product.price,
       product.quantity,
-      product.user,
-      product.photo,
+      {
+        id: product.user.id,
+        email: product.user.email,
+        password: product.user.password,
+      },
+      product.photo || undefined,
     );
   }
 
   async update(product: Product): Promise<void> {
+    const existingProduct = await this.find(product.props.id);
+    if (!existingProduct) throw new Error('Product not found!');
+
     await this.prisma.product.update({
       where: { id: product.props.id },
       data: {
@@ -80,7 +106,7 @@ export class ProductRepositoryPrisma implements ProductRepository {
   }
 
   async findByName(name: string): Promise<Product | null> {
-    const product = await this.prisma.product.findUnique({
+    const product = await this.prisma.product.findFirst({
       where: { name },
       include: { user: true },
     });
@@ -90,8 +116,12 @@ export class ProductRepositoryPrisma implements ProductRepository {
       product.name,
       product.price,
       product.quantity,
-      product.user,
-      product.photo,
+      {
+        id: product.user.id,
+        email: product.user.email,
+        password: product.user.password,
+      },
+      product.photo || undefined,
     );
   }
 }
