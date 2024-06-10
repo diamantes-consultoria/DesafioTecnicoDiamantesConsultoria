@@ -1,0 +1,2 @@
+DATABASE_URL="sua_string_de_conexão_com_o_banco_de_dados"
+JWT_SECRET="sua_chave_secreta_para_jwt"
