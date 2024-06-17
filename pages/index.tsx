@@ -2,8 +2,9 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import Content from "@/components/Main";
-import Modal from "@/components/Modal";
+import Content from "@/components/Nav";
+import Nav from "@/components/Nav";
+import Main from "@/components/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,6 @@ interface Roupa {
 }
 export default function Home() {
   // const [roupas, setRoupas] = useState<Roupa[]>([]);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   // useEffect(() => {
   //   const fetchRoupas = async () => {
@@ -29,14 +29,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <Content />
-      {/* <button */}
-      {/*   onClick={() => setIsModalOpen(true)} */}
-      {/*   className="bg-black  text-white font-bold py-2 px-4 rounded" */}
-      {/* > */}
-      {/*   Adicionar Produto + */}
-      {/* </button> */}
-      {/* <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
+      <Nav />
       {/* <ul> */}
       {/*   {Array.isArray(roupas) && */}
       {/*     roupas.map((roupa) => ( */}
