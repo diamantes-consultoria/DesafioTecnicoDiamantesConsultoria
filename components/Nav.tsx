@@ -6,7 +6,7 @@ const Nav = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="flex flex-wrap justify-between py-8">
-      <h1 className="font-bold text-black text-3xl pl-8">
+      <h1 className="font-bold text-black text-4xl pl-8">
         INNOVATION
         <br /> STORE
       </h1>

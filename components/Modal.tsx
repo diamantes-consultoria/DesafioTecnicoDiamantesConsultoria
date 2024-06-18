@@ -35,13 +35,15 @@ const Modal = ({
     <>
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white rounded-lg w-full max-w-md">
-            <div className="bg-black text-white text-center p-2 rounded-t-lg">
+          <div className="bg-white rounded-lg w-full max-w-3xl">
+            <div className="bg-black text-white text-center p-4 rounded-t-lg">
               <h2 className="text-xl font-bold mb-2">INNOVATION STORE</h2>
-              <p className="mb-2">Adicionar Produto</p>
+              <p className="mb-0">Adicionar Produto</p>
             </div>
 
-            <form className="p-4">
+            <form className="p-4 md:p-8">
+              {/* Increased padding on medium and large screens */}
+
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2">
                   Nome do produto
@@ -50,7 +52,7 @@ const Modal = ({
                   type="text"
                   value={productName}
                   onChange={handleProductNameChange}
-                  className="w-full px-4 py-2 border-black rounded border-2"
+                  className="w-full md:w-3/5 px-4 py-2 border-black rounded border-2"
                 />
               </div>
 
@@ -60,15 +62,15 @@ const Modal = ({
                   type="number"
                   value={productValue}
                   onChange={handleProductValueChange}
-                  className="w-full px-4 py-2 rounded border-black   border-2"
+                  className="w-full md:w-3/5 px-4 py-2 rounded border-black border-2"
                 />
               </div>
-              <div className="mb-4 ">
-                <label className="block text-gray-700 mr-2">
-                  Foto do produto
-                </label>
+
+              <div className="mb-4">
+                <label className="block text-gray-700">Foto do produto</label>
                 <div className="relative flex items-center">
-                  <div className="w-48 h-32 rounded-lg border border-gray-300 flex items-center justify-center mb-2 mr-2">
+                  <div className="w-32 h-32 md:w-48 md:h-32 rounded-lg border border-gray-300 flex items-center justify-center mb-2 mr-2">
+                    {/* Adjusted thumbnail size for responsiveness */}
                     {imageFile ? (
                       <img
                         src={imageFile}
@@ -96,10 +98,12 @@ const Modal = ({
               </div>
             </form>
 
-            <div className="p-4">
+            <div className="p-4 md:p-8 flex justify-end">
+              {/* Increased padding on medium and large screens */}
+
               <button
                 onClick={() => console.log("Add Item")}
-                className="w-2/5 bg-black text-xl  text-white rounded-lg p-3"
+                className="w-2/5 bg-black text-xl text-white rounded-lg p-3"
               >
                 Adicionar
               </button>
