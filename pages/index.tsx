@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [products, setProducts] = useState<RoupaProps[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<RoupaProps[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,6 +19,7 @@ export default function Home() {
           const data = await res.json();
           console.log("Fetched products:", data);
           setProducts(data);
+          setFilteredProducts(data);
         } else {
           throw new Error("Failed to fetch products");
         }
@@ -29,6 +31,13 @@ export default function Home() {
     fetchProducts();
   }, []);
 
+  const handleSearch = (searchTerm: string) => {
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
+    setFilteredProducts(filtered);
+  };
+
   return (
     <div>
       <Bar
@@ -36,7 +45,7 @@ export default function Home() {
         textSize="text-base md:text-lg lg:text-2xl"
         padding="p-2 md:p-4 lg:p-10"
       />
-      <Nav />
+      <Nav onSearch={handleSearch} />
       <Main />
       <Bar
         text="INNOVATION STORE"
@@ -44,8 +53,9 @@ export default function Home() {
         padding="p-4 md:p-8 lg:p-14"
       />
       <div className="flex flex-wrap justify-center w-full">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <Roupa
+            key={product.id}
             id={product.id}
             image={product.image}
             name={product.name}
