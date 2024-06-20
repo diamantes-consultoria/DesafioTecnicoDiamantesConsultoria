@@ -1,10 +1,12 @@
 import React, { FC } from "react";
+import Image from "next/image";
 
-type RoupaProps = {
-  image: string;
+export type RoupaProps = {
+  id: string;
   name: string;
   rating: number;
   value: number;
+  image: string;
 };
 
 const Roupa: FC<RoupaProps> = ({ image, name, rating, value }) => {
@@ -34,16 +36,18 @@ const Roupa: FC<RoupaProps> = ({ image, name, rating, value }) => {
 
   return (
     <div className="flex flex-col items-center border p-4 rounded-lg shadow-md text-black w-full md:w-1/2 lg:w-1/4">
-      <img
+      <Image
         src={image}
         alt={name}
-        className="w-64 h-64 object-cover rounded-lg"
+        className="object-fill rounded-lg"
+        width={256}
+        height={256}
       />
       <div className="text-center mt-4 w-full">
-        <h3 className="text-lg font-bold md:text-xl lg:text-2xl">{name}</h3>
+        <h3 className="text-lg md:text-xl lg:text-2xl">{name}</h3>
         <div className="flex items-center justify-center mt-2">{stars}</div>
-        <div className="text-gray-800 font-semibold md:text-lg lg:text-xl">
-          R${value}
+        <div className="text-gray-800 md:text-lg lg:text-xl">
+          R${value.toFixed(2)}
         </div>
       </div>
     </div>
