@@ -11,7 +11,7 @@ const Nav = () => {
         <br /> STORE
       </h1>
       <button className="w-2/5 bg-white text-xl border-2 border-black opacity-60 text-black rounded-3xl text-left pl-10 flex items-center">
-        <FaSearch className="mr-2" />
+        <FaSearch className="mr-2 opacity-60" />
         Digite o produto que deseja buscar
       </button>
       <button
