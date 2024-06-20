@@ -3,6 +3,7 @@ import multer from "multer";
 import { PrismaClient } from "@prisma/client";
 import path from "path";
 import fs from "fs";
+
 const prisma = new PrismaClient();
 const upload = multer({
   storage: multer.diskStorage({
@@ -12,6 +13,7 @@ const upload = multer({
     },
   }),
 });
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -23,7 +25,7 @@ export default async function handler(
           error: err.message,
         });
       }
-      const { name, value } = req.body;
+      const { name, value, rating } = req.body;
       const image = req.file ? `/uploads/${req.file.filename}` : null;
       if (!name || !value) {
         return res.status(400).json({
@@ -36,6 +38,7 @@ export default async function handler(
             name,
             value: parseFloat(value),
             image,
+            rating: rating ? parseFloat(rating) : 5, // Set rating to 5 if not provided
           },
         });
         res.status(201).json(product);
@@ -62,6 +65,7 @@ export default async function handler(
     });
   }
 }
+
 export const config = {
   api: {
     bodyParser: false,
