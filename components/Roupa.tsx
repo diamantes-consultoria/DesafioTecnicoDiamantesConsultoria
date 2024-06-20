@@ -4,10 +4,10 @@ type RoupaProps = {
   image: string;
   name: string;
   rating: number;
-  price: number;
+  value: number;
 };
 
-const Roupa: FC<RoupaProps> = ({ image, name, rating, price }) => {
+const Roupa: FC<RoupaProps> = ({ image, name, rating, value }) => {
   const stars = [];
 
   for (let i = 1; i <= 5; i++) {
@@ -43,7 +43,7 @@ const Roupa: FC<RoupaProps> = ({ image, name, rating, price }) => {
         <h3 className="text-lg font-bold md:text-xl lg:text-2xl">{name}</h3>
         <div className="flex items-center justify-center mt-2">{stars}</div>
         <div className="text-gray-800 font-semibold md:text-lg lg:text-xl">
-          R${price}
+          R${value}
         </div>
       </div>
     </div>
