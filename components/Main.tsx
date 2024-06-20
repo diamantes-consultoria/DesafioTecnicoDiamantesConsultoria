@@ -28,7 +28,7 @@ const Main = () => {
         </ul>
       </div>
 
-      <div className="w-full md:w-1/3 flex justify-center md:justify-end md:ml-6">
+      <div className="w-full md:w-1/3 flex justify-center md:justify-end">
         <Image
           src={"/pessoa.png"}
           alt="Imagem da pessoa"

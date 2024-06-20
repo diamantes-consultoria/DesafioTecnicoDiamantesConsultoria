@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 const Modal = ({
   isOpen,
@@ -104,10 +105,12 @@ const Modal = ({
                 <div className="relative flex items-center">
                   <div className="w-32 h-32 md:w-48 md:h-32 rounded-lg border border-gray-300 flex items-center justify-center mb-2 mr-2">
                     {imagePreview ? (
-                      <img
+                      <Image
                         src={imagePreview}
                         alt="Product Thumbnail"
                         className="w-full h-full object-cover rounded-lg border-2 border-black"
+                        width={192}
+                        height={128}
                       />
                     ) : (
                       <span className="text-gray-400 text-sm">Thumbnail</span>
