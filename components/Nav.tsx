@@ -10,12 +10,13 @@ const Nav = () => {
         INNOVATION
         <br /> STORE
       </h1>
-      <button className="w-2/5 bg-white text-xl border-2 border-black opacity-60 text-black rounded-3xl text-left pl-10">
+      <button className="w-2/5 bg-white text-xl border-2 border-black opacity-60 text-black rounded-3xl text-left pl-10 flex items-center">
+        <FaSearch className="mr-2" />
         Digite o produto que deseja buscar
       </button>
       <button
         onClick={() => setIsModalOpen(true)}
-        className="w-auto bg-black text-2xl  text-white rounded-xl mr-8 p-5"
+        className="w-auto bg-black text-2xl text-white rounded-xl mr-8 p-5"
       >
         Adicionar Produto +
       </button>
