@@ -3,32 +3,25 @@ import Link from "next/link";
 
 export type BarProps = {
   text: string;
-  textSize?:
-    | "text-sm"
-    | "text-base"
-    | "text-lg"
-    | "text-xl"
-    | "text-2xl"
-    | "text-3xl"
-    | "text-4xl"
-    | "text-5xl"
-    | "text-6xl"
-    | "text-7xl"
-    | "text-8xl"
-    | "text-9xl"
-    | "text-10xl";
-  padding?: "p-8" | "p-16";
+  textSize?: string;
+  padding?: string;
 };
 
-const Bar: FC<BarProps> = ({ text, textSize, padding }) => {
+const Bar: FC<BarProps> = ({
+  text,
+  textSize = "text-sm sm:text-base md:text-lg lg:text-2xl",
+  padding = "p-2 sm:p-4 md:p-6 lg:p-8",
+}) => {
   return (
     <header>
       <nav
-        className={`flex justify-center items-center bg-black h-16 p-8 ${textSize} ${padding}`}
+        className={`flex justify-center items-center bg-black h-16 ${padding} ${textSize}`}
       >
         <ul>
           <li>
-            <Link href="/">{text}</Link>
+            <Link href="/" className="text-white no-underline">
+              {text}
+            </Link>
           </li>
         </ul>
       </nav>
